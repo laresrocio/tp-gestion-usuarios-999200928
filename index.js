@@ -1,3 +1,6 @@
+import { getUsers } from "./controllers.js";
+
+
 const params = process.argv.slice(2);
 const operacion = params[0];
 
@@ -6,7 +9,7 @@ let resultado;
 const main = async () => {
   switch (operacion) {
     case "get":
-      resultado = "aca se listan los usuarios de la db"
+      resultado = await getUsers();
       break;
     case "add":
       resultado = "aca se agrega un usuario a la db"
