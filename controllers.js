@@ -33,4 +33,12 @@ const updateUser = async (id, updates) => {
   }
 }
 
-export { getUsers, createUser, updateUser };
+const deleteUser = async (id) => {
+  const q = `DELETE FROM users WHERE id = ?`
+  const [response] = await db.query(q, [id])
+  if (response.serverStatus === 2) {
+    return "Usuario borrado"
+  }
+}
+
+export { getUsers, createUser, updateUser, deleteUser };
