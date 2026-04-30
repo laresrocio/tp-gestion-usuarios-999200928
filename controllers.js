@@ -11,4 +11,12 @@ const getUsers = async () => {
   }
 }
 
-export { getUsers }
+const createUser = async (username, email, password) => {
+  const id = crypto.randomUUID();
+  const query = "INSERT INTO users (id, username, email, password) VALUES (?, ?, ?, ?)";
+  const [response] = await db.query(query, [id, username, email, password]);
+  return response;
+}
+
+
+export { getUsers, createUser };

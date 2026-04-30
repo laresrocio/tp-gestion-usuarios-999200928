@@ -1,4 +1,4 @@
-import { getUsers } from "./controllers.js";
+import { getUsers, createUser } from "./controllers.js";
 
 
 const params = process.argv.slice(2);
@@ -12,7 +12,7 @@ const main = async () => {
       resultado = await getUsers();
       break;
     case "add":
-      resultado = "aca se agrega un usuario a la db"
+      resultado = await createUser(params[1], params[2], params[3]);
       break;
     case "update":
       resultado = "aca se actualiza un usuario de la db"
