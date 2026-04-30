@@ -1,4 +1,4 @@
-import { getUsers, createUser } from "./controllers.js";
+import { getUsers, createUser, updateUser } from "./controllers.js";
 
 
 const params = process.argv.slice(2);
@@ -15,8 +15,13 @@ const main = async () => {
       resultado = await createUser(params[1], params[2], params[3]);
       break;
     case "update":
-      resultado = "aca se actualiza un usuario de la db"
-      break;
+      const updates = {
+        username: params[1],
+        email: params[2],
+        password: params[3]
+      }
+      resultado = await updateUser(params[4], updates)
+      break
     case "delete":
       resultado = "aca se borra un usuario de la db"
       break;
@@ -29,3 +34,4 @@ const main = async () => {
   process.exit();
 }
 main();
+
