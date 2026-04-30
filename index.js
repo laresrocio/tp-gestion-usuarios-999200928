@@ -64,10 +64,9 @@ const main = async () => {
         password: params[3]
       }
 
-      //validar id
       //id con formato uuid
       if (params[4].length !== 36) {
-        resultado = "El id debe tener un formato valido"
+        resultado = "El ID debe tener un formato valido"
         break;
       }
 
@@ -120,8 +119,25 @@ const main = async () => {
       resultado = await deleteUser(params[1])
       break
     default:
+      resultado = `
+  ---------------------------------------------------------
+          ¡Bienvenido al CLI de Usuarios!
+  ---------------------------------------------------------
+  Uso: node index.js <operacion> [argumentos]
 
-      resultado = "operacion invalida"
+  Comandos disponibles:
+  
+     📂  get : Listar todos los usuarios.
+     ➕  add : Crear un nuevo usuario.
+                Uso: node index.js add <nombre> <email> <password>
+  🔄  update : Actualizar un usuario existente.
+                Uso: node index.js update <nombre> <email> <password> <id>
+  🗑️  delete : Eliminar un usuario por su ID.
+                Uso: node index.js delete <id>
+
+  Ejemplo: node index.js add German german@gmail.com 12345678
+  ---------------------------------------------------------
+      `;
       break;
   }
   console.log(resultado);
